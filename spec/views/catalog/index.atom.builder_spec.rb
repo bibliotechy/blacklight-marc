@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'rexml/document'
 
-describe "catalog/index" do  
+describe "catalog/index" do
 
   before(:all) do
     @config = Blacklight::Configuration.new.configure do |config|
@@ -10,7 +10,7 @@ describe "catalog/index" do
         :rows => 10
       }
     end
-    
+
     @params = { 'content_format' => 'marc', :f => { :format => ['Book'] }, :page => 2 }
 
     # run a solr query to get our data
@@ -27,17 +27,17 @@ describe "catalog/index" do
     #    assigns[:response] = @rsolr_response
     #    assigns[:document_list] = @document_list
     # not sure why we can't use assigns for 'params', instead this weird way,
-    # but okay. 
+    # but okay.
 
     params.merge!( @params )
     allow(view).to receive(:blacklight_config).and_return(@config)
     allow(view).to receive(:search_field_options_for_select).and_return([])
 
-    render :template => 'catalog/index', :formats => [:atom] 
+    render :template => 'catalog/index', :formats => [:atom]
 
-    # We need to use rexml to test certain things that have_tag wont' test    
-    # note that response is depricated rails 3, use "redered" instead. 
-    @response_xml = REXML::Document.new(rendered)   
+    # We need to use rexml to test certain things that have_tag wont' test
+    # note that response is depricated rails 3, use "redered" instead.
+    @response_xml = REXML::Document.new(rendered)
   end
 
   describe "when content_format is specified" do

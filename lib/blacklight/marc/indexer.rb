@@ -1,9 +1,9 @@
 require 'library_stdnums'
  require 'traject/null_writer'
 require 'traject/macros/marc21_semantics'
- 
+
 require 'traject/macros/marc_format_classifier'
- 
+
 require 'traject/solr_json_writer'
 require 'traject/marc_reader'
 require 'marc/fastxmlwriter'
